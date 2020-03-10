@@ -14,7 +14,10 @@ Prerequisites:
      
 ## Install
 
-    git clone 
+    git clone https://github.com/benIT/morse-zenity
+    cd morse-zenity
+    git submodule init 
+    git submodule update 
     
     cd lib/cwaw 
     sudo make install
