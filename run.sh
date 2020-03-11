@@ -9,12 +9,14 @@ fileUserInput=$(zenity --entry --title "Name request" --text "Enter file name:")
 eog alphabet.jpg &
 alphabetPid=$!
 cwwav --output $fileUserInput --frequency=650 --wpm=5 $tempFile
-lame $fileUserInput $fileUserInput.mp3
+lame $fileUserInput mp3/$fileUserInput.mp3
 rm $fileUserInput
-cvlc --play-and-exit $fileUserInput.mp3
+cvlc --play-and-exit mp3/$fileUserInput.mp3
 rm -f $tempFile
 kill -9 $alphabetPid
-zenity --question --text="Keep mp3 file?" --ok-label="Yes" --cancel-label="No"
-if [ $? = 1 ] ; then
-    rm -f $fileUserInput.mp3
+zenity --question --text="Destroy mp3 file?" --ok-label="Yes" --cancel-label="No"
+echo $?
+sleep 2
+if [ $? = 0 ] ; then
+    rm -f mp3/$fileUserInput.mp3
 fi
