@@ -16,7 +16,6 @@ rm -f $tempFile
 kill -9 $alphabetPid
 zenity --question --text="Destroy mp3 file?" --ok-label="Yes" --cancel-label="No"
 echo $?
-sleep 2
 if [ $? = 0 ] ; then
     rm -f mp3/$fileUserInput.mp3
 fi
